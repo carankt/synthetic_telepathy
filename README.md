@@ -4,6 +4,13 @@ Synthetic Telepathy: Inner Speech Recognition using EEG
 ## Dataset Used 
 Inner Speech - Nicolas Nieto and Victoria Peterson and Hugo Rufiner and Juan Kamienkowski and Ruben Spies (2021). Inner Speech. OpenNeuro. [Dataset] doi: 10.18112/openneuro.ds003626.v2.0.0 [Download here](https://openneuro.org/datasets/ds003626/versions/2.0.0) 
 
+## Installing all the requirements 
+
+```python
+pip install -r requirements.txt
+```
+
+
 ## Dataloader Functionality
 
 ```python
