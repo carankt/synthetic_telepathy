@@ -84,7 +84,7 @@ class get_loader(nn.Module):
         
         train_data = TensorDataset(X, Y)
         train_sampler = RandomSampler(X)
-        train_dataloader = DataLoader(X, sampler=train_sampler, batch_size=batch_size)
+        train_dataloader = DataLoader(train_data, sampler=train_sampler, batch_size=batch_size)
                   
         # can add test/validation loader too 
         
