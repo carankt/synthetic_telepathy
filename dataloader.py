@@ -10,7 +10,7 @@ from torch.utils.data import DataLoader, Subset, TensorDataset, RandomSampler
 
 class get_loader(nn.Module):
     
-    def __init__(self, root_dir, n_sess = 2, mode = 1):
+    def __init__(self, root_dir, channel_list, n_sess = 2, mode = 1):
         '''
         root_dir: the main folder with subject-wise subfolders
         n_sess:   number of sessions to consider. 1/2/3
@@ -23,6 +23,7 @@ class get_loader(nn.Module):
         self.root_dir = root_dir
         self.n_sess = n_sess
         self.mode = mode
+        self.channel_list = channel_list
         
     def load_single_subject(self, sub_idx):
         '''
@@ -47,8 +48,9 @@ class get_loader(nn.Module):
             #  load data and events
             file_name = self.root_dir  + Num_s + '/ses-0'+ str(N_B) + '/' +Num_s+'_ses-0'+str(N_B)+'_eeg-epo.fif'
             X= mne.read_epochs(file_name,verbose='WARNING')
-            data[N_B]= X._data    
-         
+            X = X.pick_channels(ch_names = self.channel_list)
+            data[N_B]= X._data
+            
         #stack the sessions
         X = data.get(1)
         Y = y.get(1)

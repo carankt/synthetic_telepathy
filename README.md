@@ -15,9 +15,10 @@ pip install -r requirements.txt
 
 ```python
 from dataloader import get_loader
-root = '/path/to/inner_speech/derivatives_folder/'
-creater = get_loader(root)
-xn, yn = creater.load_multiple_subjects([1, 2, 3, 4, 5, 6, 7, 8]) # loads 8 subjects data and stacks them in a 3d array
+root = '/Volumes/Datasets/inner_speech/derivatives/'
+# root =  'dataset/derivatives/' # -sil
+creater = get_loader(root, channel_list= ["A4", "A5", "A19", "A20", "A32"], n_sess= 3)
+xn, yn = creater.load_multiple_subjects([1, 2, 4, 5, 6, 7])
 ```
 
 * xn - shape - (number_of_samples, channels, time_stamps)
